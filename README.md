@@ -7,5 +7,5 @@ UNDER CONSTRUCTION
 HOW TO BULILD
 
       cd build
-      cmake --build .
+      cmake --build 
       
