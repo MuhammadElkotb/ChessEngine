@@ -13,21 +13,21 @@ headers/Piece.hpp
 add_executable(ChessEngine ${SOURCES})
 
 target_link_libraries(ChessEngine 
-"M:/Prject/Cpp/ChessEngine/SFML/lib/ogg.lib"
-"M:/Prject/Cpp/ChessEngine/SFML/lib/openal32.lib"
-"M:/Prject/Cpp/ChessEngine/SFML/lib/sfml-audio-d.lib"
-"M:/Prject/Cpp/ChessEngine/SFML/lib/sfml-graphics-d.lib"
-"M:/Prject/Cpp/ChessEngine/SFML/lib/sfml-main-d.lib"
-"M:/Prject/Cpp/ChessEngine/SFML/lib/sfml-network-d.lib"
-"M:/Prject/Cpp/ChessEngine/SFML/lib/sfml-system-d.lib"
-"M:/Prject/Cpp/ChessEngine/SFML/lib/sfml-window-d.lib"
-"M:/Prject/Cpp/ChessEngine/SFML/lib/vorbis.lib"
-"M:/Prject/Cpp/ChessEngine/SFML/lib/vorbisenc.lib"
-"M:/Prject/Cpp/ChessEngine/SFML/lib/vorbisfile.lib"
-"M:/Prject/Cpp/ChessEngine/SFML/lib/flac.lib"
-"M:/Prject/Cpp/ChessEngine/SFML/lib/freetype.lib"
+"${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/ogg.lib"
+"${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/openal32.lib"
+"${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/sfml-audio-d.lib"
+"${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/sfml-graphics-d.lib"
+"${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/sfml-main-d.lib"
+"${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/sfml-network-d.lib"
+"${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/sfml-system-d.lib"
+"${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/sfml-window-d.lib"
+"${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/vorbis.lib"
+"${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/vorbisenc.lib"
+"${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/vorbisfile.lib"
+"${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/flac.lib"
+"${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/freetype.lib"
 )
 
 target_include_directories(ChessEngine PUBLIC 
-"M:/Prject/Cpp/ChessEngine/SFML/include"
+"${CMAKE_CURRENT_SOURCE_DIR}/SFML/include"
 )
