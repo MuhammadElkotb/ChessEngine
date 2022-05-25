@@ -10,7 +10,6 @@ int main(){
     Board Board;
     sf::RenderWindow appWindow(sf::VideoMode(800, 800), "Chess Engine", sf::Style::Titlebar | sf::Style::Close, settings);
 
-
     sf::Cursor cursor;
     cursor.loadFromSystem(sf::Cursor::Hand);
 

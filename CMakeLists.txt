@@ -8,6 +8,7 @@ src/Piece.cpp
 set(HEADERS
 headers/Board.hpp
 headers/Piece.hpp
+headers/Cell.hpp
 )
 
 add_executable(ChessEngine ${SOURCES})
