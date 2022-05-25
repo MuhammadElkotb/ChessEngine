@@ -13,6 +13,9 @@ headers/Cell.hpp
 
 add_executable(ChessEngine ${SOURCES})
 
+set_property(TARGET ChessEngine PROPERTY CXX_STANDARD 20)
+
+
 target_link_libraries(ChessEngine 
 "${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/ogg.lib"
 "${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/openal32.lib"
