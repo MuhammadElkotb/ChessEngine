@@ -10,6 +10,9 @@
     <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Piece.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\TextureLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="M:\Prject\Cpp\ChessEngine\CMakeLists.txt" />

@@ -2,14 +2,11 @@
 #include <iostream>
 #include "..\headers\Piece.hpp"
 #include <memory>
+#include "..\headers\TextureLoader.hpp"
 Board::Board()
 {
     this->initBoard();
-    this->tempTexture = std::make_unique<sf::Texture>();
-    this->tempTexture->loadFromFile("..\\assets\\w_pawn_png_shadow_1024px.png");
     this->initPieces();
-    
-
 }
 
 void Board::initBoard()
@@ -42,11 +39,10 @@ void Board::initBoard()
 
 void Board::initPieces()
 {
-    sf::Sprite sprite;
-    sprite.setTexture(*this->tempTexture);
-    sprite.setScale(0.1, 0.1);
-    sprite.setPosition(60, 60);
-    this->tempSprite = sprite;
+
+
+    
+   
 }
 
 Board::~Board()
@@ -62,7 +58,8 @@ void Board::draw(sf::RenderWindow &window)
             window.draw(this->cells[i][j].cellRect);
         }
     }
+    sf::Sprite sprite;
+
     
-    window.draw(this->tempSprite);
 
 }

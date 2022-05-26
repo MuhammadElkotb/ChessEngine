@@ -4,11 +4,13 @@ set(SOURCES
 src/App.cpp
 src/Board.cpp
 src/Piece.cpp
+src/TextureLoader.cpp
 )
 set(HEADERS
 headers/Board.hpp
 headers/Piece.hpp
 headers/Cell.hpp
+headers/TextureLoader.hpp
 )
 
 add_executable(ChessEngine ${SOURCES})

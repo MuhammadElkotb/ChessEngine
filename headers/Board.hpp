@@ -5,13 +5,14 @@
 #include <array>
 #include "Piece.hpp"
 #include "Cell.hpp"
-
+#include "TextureLoader.hpp"
 
 class Board {
 
 private:
     std::array<std::array<Cell, 8>, 8> cells;
     std::array<Piece, 32> pieces;
+    TextureLoader texture_loader;
     float originX = 0;
     float originY = 0;
     void initBoard();
@@ -21,9 +22,7 @@ public:
     Board();
     ~Board();
     void draw(sf::RenderWindow& window);
-    sf::Sprite tempSprite;
-    std::unique_ptr<sf::Texture> tempTexture;
-
+    TextureLoader getTextureLoader();
 };
 
 
