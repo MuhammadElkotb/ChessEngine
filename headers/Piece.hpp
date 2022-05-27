@@ -13,10 +13,8 @@ public:
     ~Piece();
     Cell getCell();
     void setCell(const Cell& cell);
-    void setTexture(sf::Texture texture);
     void setSprite(sf::Sprite sprite);
     sf::Sprite getSprite();
-    sf::Texture getTexture();
     
     
 };

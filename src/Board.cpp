@@ -3,6 +3,7 @@
 #include "..\headers\Piece.hpp"
 #include <memory>
 #include "..\headers\TextureLoader.hpp"
+#define BLACK_BISHOP_TEXTURE "..\\assets\\black_bioshop.png"
 Board::Board()
 {
     this->initBoard();
@@ -27,6 +28,7 @@ void Board::initBoard()
             cellRect.setPosition({posX, posY});
             posX += 100;
             cell.cellRect = cellRect;
+            cell.x = i; cell.y = j;
             this->cells[i][j] = cell;
 
             if (j != 7)
@@ -39,6 +41,14 @@ void Board::initBoard()
 
 void Board::initPieces()
 {
+    
+    sf::Sprite sprite;
+
+    sprite.setTexture(this->texture_loader.loadBlackBioshopTexture(BLACK_BISHOP_TEXTURE));
+    sprite.setPosition({this->cells[0][0].cellRect.getPosition().x + 15, this->cells[0][0].cellRect.getPosition().y + 7});
+    sprite.setScale(0.08, 0.08);
+
+    this->pieces[0].setSprite(sprite);
 
 
     
@@ -58,7 +68,8 @@ void Board::draw(sf::RenderWindow &window)
             window.draw(this->cells[i][j].cellRect);
         }
     }
-    sf::Sprite sprite;
+
+    window.draw(this->pieces[0].getSprite());
 
     
 

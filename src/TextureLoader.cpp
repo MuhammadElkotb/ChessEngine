@@ -1,5 +1,5 @@
 #include "..\headers\TextureLoader.hpp"
-
+#include <iostream>
 TextureLoader::TextureLoader()
 {
     this->black_pawn = std::make_unique<sf::Texture>();
@@ -21,79 +21,93 @@ TextureLoader::~TextureLoader()
 {
 }
 
-std::unique_ptr<sf::Texture> TextureLoader::getBlackBioshopTexture(){
-    return std::move(this->black_bioshop);
-}
 
-sf::Texture TextureLoader::loadBlackPawnTexture(std::string path)
+
+sf::Texture& TextureLoader::loadBlackPawnTexture(std::string path)
 {
     (*this->black_pawn).loadFromFile(path);
+    (*this->black_pawn).setSmooth(true);
     return *this->black_pawn; 
 }
 
-sf::Texture TextureLoader::loadBlackBioshopTexture(std::string path)
+sf::Texture& TextureLoader::loadBlackBioshopTexture(std::string path)
 {
     (*this->black_bioshop).loadFromFile(path);
+    (*this->black_bioshop).setSmooth(true);
     return *this->black_bioshop; 
 }
 
-sf::Texture TextureLoader::loadBlackKnightTexture(std::string path)
+sf::Texture& TextureLoader::loadBlackKnightTexture(std::string path)
 {
     (*this->black_knight).loadFromFile(path);
+    (*this->black_knight).setSmooth(true);
     return *this->black_knight; 
 }
 
-sf::Texture TextureLoader::loadBlackRookTexture(std::string path)
+sf::Texture& TextureLoader::loadBlackRookTexture(std::string path)
 {
     (*this->black_rook).loadFromFile(path);
+    (*this->black_rook).setSmooth(true);
+
     return *this->black_rook; 
 }
 
-sf::Texture TextureLoader::loadBlackQueenTexture(std::string path)
+sf::Texture& TextureLoader::loadBlackQueenTexture(std::string path)
 {
     (*this->black_queen).loadFromFile(path);
+    (*this->black_queen).loadFromFile(path);
+
     return *this->black_queen; 
 }
 
-sf::Texture TextureLoader::loadBlackKingTexture(std::string path)
+sf::Texture& TextureLoader::loadBlackKingTexture(std::string path)
 {
     (*this->black_king).loadFromFile(path);
+    (*this->black_king).loadFromFile(path);
+
     return *this->black_king; 
 }
 
 
-sf::Texture TextureLoader::loadWhitePawnTexture(std::string path)
+sf::Texture& TextureLoader::loadWhitePawnTexture(std::string path)
 {
     (*this->white_pawn).loadFromFile(path);
+    (*this->white_pawn).setSmooth(true);
+
     return *this->white_pawn; 
 }
 
-sf::Texture TextureLoader::loadWhiteBioshopTexture(std::string path)
+sf::Texture& TextureLoader::loadWhiteBioshopTexture(std::string path)
 {
     (*this->white_bioshop).loadFromFile(path);
+    (*this->white_bioshop).setSmooth(true);
     return *this->white_bioshop; 
 }
 
-sf::Texture TextureLoader::loadWhiteKnightTexture(std::string path)
+sf::Texture& TextureLoader::loadWhiteKnightTexture(std::string path)
 {
     (*this->white_knight).loadFromFile(path);
+    (*this->white_knight).setSmooth(true);
     return *this->white_knight; 
 }
 
-sf::Texture TextureLoader::loadWhiteRookTexture(std::string path)
+sf::Texture& TextureLoader::loadWhiteRookTexture(std::string path)
 {
     (*this->white_rook).loadFromFile(path);
+    (*this->white_rook).setSmooth(true);
     return *this->white_rook; 
 }
 
-sf::Texture TextureLoader::loadWhiteQueenTexture(std::string path)
+sf::Texture& TextureLoader::loadWhiteQueenTexture(std::string path)
 {
     (*this->white_queen).loadFromFile(path);
+    (*this->white_queen).setSmooth(true);
     return *this->white_queen; 
 }
 
-sf::Texture TextureLoader::loadWhiteKingTexture(std::string path)
+sf::Texture& TextureLoader::loadWhiteKingTexture(std::string path)
 {
     (*this->white_king).loadFromFile(path);
+    (*this->white_king).setSmooth(true);
     return *this->white_king; 
 }

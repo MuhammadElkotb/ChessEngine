@@ -25,38 +25,21 @@ private:
 public:
     TextureLoader();
     ~TextureLoader();
-    std::unique_ptr<sf::Texture> getBlackPawnTexture();
-    std::unique_ptr<sf::Texture> getBlackBioshopTexture();
-    std::unique_ptr<sf::Texture> getBlackKnightTexture();
-    std::unique_ptr<sf::Texture> getBlackRookTexture();
-    std::unique_ptr<sf::Texture> getBlackQueenTexture();
-    std::unique_ptr<sf::Texture> getBlackKingTexture();
 
 
+    sf::Texture& loadBlackPawnTexture(std::string path);
+    sf::Texture& loadBlackBioshopTexture(std::string path);
+    sf::Texture& loadBlackKnightTexture(std::string path);
+    sf::Texture& loadBlackRookTexture(std::string path);
+    sf::Texture& loadBlackQueenTexture(std::string path);
+    sf::Texture& loadBlackKingTexture(std::string path);
 
-    std::unique_ptr<sf::Texture> getWhitePawnTexture();
-    std::unique_ptr<sf::Texture> getWhiteBioshopTexture();
-    std::unique_ptr<sf::Texture> getWhiteKnightTexture();
-    std::unique_ptr<sf::Texture> getWhiteRookTexture();
-    std::unique_ptr<sf::Texture> getWhiteQueenTexture();
-    std::unique_ptr<sf::Texture> getWhiteKingTexture();
-
-
-
-
-    sf::Texture loadBlackPawnTexture(std::string path);
-    sf::Texture loadBlackBioshopTexture(std::string path);
-    sf::Texture loadBlackKnightTexture(std::string path);
-    sf::Texture loadBlackRookTexture(std::string path);
-    sf::Texture loadBlackQueenTexture(std::string path);
-    sf::Texture loadBlackKingTexture(std::string path);
-
-    sf::Texture loadWhitePawnTexture(std::string path);
-    sf::Texture loadWhiteBioshopTexture(std::string path);
-    sf::Texture loadWhiteKnightTexture(std::string path);
-    sf::Texture loadWhiteRookTexture(std::string path);
-    sf::Texture loadWhiteQueenTexture(std::string path);
-    sf::Texture loadWhiteKingTexture(std::string path);
+    sf::Texture& loadWhitePawnTexture(std::string path);
+    sf::Texture& loadWhiteBioshopTexture(std::string path);
+    sf::Texture& loadWhiteKnightTexture(std::string path);
+    sf::Texture& loadWhiteRookTexture(std::string path);
+    sf::Texture& loadWhiteQueenTexture(std::string path);
+    sf::Texture& loadWhiteKingTexture(std::string path);
 
 
     
