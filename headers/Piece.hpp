@@ -7,14 +7,13 @@ class Piece {
 private:
     Cell cell;
     sf::Sprite sprite;
-    sf::Texture texture;
 public:
     Piece();
     ~Piece();
-    Cell getCell();
-    void setCell(const Cell& cell);
+    Cell& getCell();
+    void setCell(Cell& cell);
     void setSprite(sf::Sprite sprite);
-    sf::Sprite getSprite();
+    sf::Sprite& getSprite();
     
     
 };

@@ -3,11 +3,9 @@
 #include <SFML\Graphics.hpp>
 
 typedef struct Cell {
-
     sf::RectangleShape cellRect;
     int x;
     int y;
-    
 } Cell;
 
 
