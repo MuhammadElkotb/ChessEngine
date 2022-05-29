@@ -4,19 +4,6 @@
 #include <memory>
 #include "..\headers\TextureLoader.hpp"
 
-#define BLACK_BISHOP_TEXTURE "..\\assets\\black_bioshop.png"
-#define BLACK_KNIGHT_TEXTURE "..\\assets\\black_knight.png"
-#define BLACK_ROOK_TEXTURE "..\\assets\\black_rook.png"
-#define BLACK_KING_TEXTURE "..\\assets\\black_king.png"
-#define BLACK_QUEEN_TEXTURE "..\\assets\\black_queen.png"
-#define BLACK_PAWN_TEXTURE "..\\assets\\black_pawn.png"
-
-#define WHITE_BISHOP_TEXTURE "..\\assets\\white_bioshop.png"
-#define WHITE_KNIGHT_TEXTURE "..\\assets\\white_knight.png"
-#define WHITE_ROOK_TEXTURE "..\\assets\\white_rook.png"
-#define WHITE_KING_TEXTURE "..\\assets\\white_king.png"
-#define WHITE_QUEEN_TEXTURE "..\\assets\\white_queen.png"
-#define WHITE_PAWN_TEXTURE "..\\assets\\white_pawn.png"
 
 Board::Board()
 {
@@ -66,11 +53,11 @@ void Board::initPieces()
     {
         Piece blackPawn;
         blackPawn.setCell(this->getCellByPosition(1, i));
-        blackPawn.setSprite(sf::Sprite(this->texture_loader.loadBlackPawnTexture(BLACK_PAWN_TEXTURE)));
+        blackPawn.setSprite(sf::Sprite(this->texture_loader.getBlackPawnTexture()));
         this->piecesMap["bP" + std::to_string(i)] = blackPawn;
         Piece whitePawn;
         whitePawn.setCell(this->getCellByPosition(6, i));
-        whitePawn.setSprite(sf::Sprite(this->texture_loader.loadWhitePawnTexture(WHITE_PAWN_TEXTURE)));
+        whitePawn.setSprite(sf::Sprite(this->texture_loader.getWhitePawnTexture()));
         this->piecesMap["wP" + std::to_string(i)] = whitePawn;
     }
 
@@ -93,14 +80,14 @@ void Board::initPieces()
     blackKnight2.setCell(this->getCellByPosition(0, pos++));
     blackRook2.setCell(this->getCellByPosition(0, pos++));
 
-    blackRook1.setSprite(sf::Sprite(this->texture_loader.loadBlackRookTexture(BLACK_ROOK_TEXTURE)));
-    blackKnight1.setSprite(sf::Sprite(this->texture_loader.loadBlackKnightTexture(BLACK_BISHOP_TEXTURE)));
-    blackBioshop1.setSprite(sf::Sprite(this->texture_loader.loadBlackBioshopTexture(BLACK_KNIGHT_TEXTURE)));
-    blackKing.setSprite(sf::Sprite(this->texture_loader.loadBlackKingTexture(BLACK_KING_TEXTURE)));
-    blackQueen.setSprite(sf::Sprite(this->texture_loader.loadBlackQueenTexture(BLACK_QUEEN_TEXTURE)));
-    blackBioshop2.setSprite(sf::Sprite(this->texture_loader.loadBlackBioshopTexture(BLACK_KNIGHT_TEXTURE)));
-    blackKnight2.setSprite(sf::Sprite(this->texture_loader.loadBlackKnightTexture(BLACK_BISHOP_TEXTURE)));
-    blackRook2.setSprite(sf::Sprite(this->texture_loader.loadBlackRookTexture(BLACK_ROOK_TEXTURE)));
+    blackRook1.setSprite(sf::Sprite(this->texture_loader.getBlackRookTexture()));
+    blackKnight1.setSprite(sf::Sprite(this->texture_loader.getBlackKnightTexture()));
+    blackBioshop1.setSprite(sf::Sprite(this->texture_loader.getBlackBioshopTexture()));
+    blackKing.setSprite(sf::Sprite(this->texture_loader.getBlackKingTexture()));
+    blackQueen.setSprite(sf::Sprite(this->texture_loader.getBlackQueenTexture()));
+    blackBioshop2.setSprite(sf::Sprite(this->texture_loader.getBlackBioshopTexture()));
+    blackKnight2.setSprite(sf::Sprite(this->texture_loader.getBlackKnightTexture()));
+    blackRook2.setSprite(sf::Sprite(this->texture_loader.getBlackRookTexture()));
 
     this->piecesMap["bR1"] = blackRook1;
     this->piecesMap["bN1"] = blackKnight1;
@@ -131,14 +118,14 @@ void Board::initPieces()
     whiteKnight2.setCell(this->getCellByPosition(7, pos++));
     whiteRook2.setCell(this->getCellByPosition(7, pos++));
 
-    whiteRook1.setSprite(sf::Sprite(this->texture_loader.loadWhiteRookTexture(WHITE_ROOK_TEXTURE)));
-    whiteKnight1.setSprite(sf::Sprite(this->texture_loader.loadWhiteKnightTexture(WHITE_BISHOP_TEXTURE)));
-    whiteBioshop1.setSprite(sf::Sprite(this->texture_loader.loadWhiteBioshopTexture(WHITE_KNIGHT_TEXTURE)));
-    whiteKing.setSprite(sf::Sprite(this->texture_loader.loadWhiteKingTexture(WHITE_KING_TEXTURE)));
-    whiteQueen.setSprite(sf::Sprite(this->texture_loader.loadWhiteQueenTexture(WHITE_QUEEN_TEXTURE)));
-    whiteBioshop2.setSprite(sf::Sprite(this->texture_loader.loadWhiteBioshopTexture(WHITE_KNIGHT_TEXTURE)));
-    whiteKnight2.setSprite(sf::Sprite(this->texture_loader.loadWhiteKnightTexture(WHITE_BISHOP_TEXTURE)));
-    whiteRook2.setSprite(sf::Sprite(this->texture_loader.loadWhiteRookTexture(WHITE_ROOK_TEXTURE)));
+    whiteRook1.setSprite(sf::Sprite(this->texture_loader.getWhiteRookTexture()));
+    whiteKnight1.setSprite(sf::Sprite(this->texture_loader.getWhiteKnightTexture()));
+    whiteBioshop1.setSprite(sf::Sprite(this->texture_loader.getWhiteBioshopTexture()));
+    whiteKing.setSprite(sf::Sprite(this->texture_loader.getWhiteKingTexture()));
+    whiteQueen.setSprite(sf::Sprite(this->texture_loader.getWhiteQueenTexture()));
+    whiteBioshop2.setSprite(sf::Sprite(this->texture_loader.getWhiteBioshopTexture()));
+    whiteKnight2.setSprite(sf::Sprite(this->texture_loader.getWhiteKnightTexture()));
+    whiteRook2.setSprite(sf::Sprite(this->texture_loader.getWhiteRookTexture()));
 
     this->piecesMap["wR1"] = whiteRook1;
     this->piecesMap["wN1"] = whiteKnight1;
