@@ -3,37 +3,50 @@
 #include <SFML\Graphics.hpp>
 #include <SFML\Window.hpp>
 
-int main(){
+int main()
+{
 
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
-    Board Board;
+    Board board;
     sf::RenderWindow appWindow(sf::VideoMode(800, 800), "Chess Engine", sf::Style::Titlebar | sf::Style::Close, settings);
 
-    sf::Cursor cursor;
-    cursor.loadFromSystem(sf::Cursor::Hand);
-
-    appWindow.setMouseCursor(cursor);
-
-    sf::CircleShape circle(30);
-
-    circle.setFillColor(sf::Color::Red);
-    circle.setPosition(50, 60);
-
-
-    while(appWindow.isOpen()){
+    int ctr = 0;
+    bool held_piece = false;
+    while (appWindow.isOpen())
+    {
         sf::Event event;
 
-        while(appWindow.pollEvent(event)){
-            if(event.type == sf::Event::Closed){
+        while (appWindow.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+            {
                 appWindow.close();
             }
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+                
+            }
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+                int y = sf::Mouse::getPosition(appWindow).x / 100;
+                int x = sf::Mouse::getPosition(appWindow).y / 100;
+                if (event.type == sf::Event::MouseMoved)
+                {
+                    if (board.getPositionPieceMap().find(&board.getCellByPosition(x, y)) != board.getPositionPieceMap().end())
+                    {
+                        held_piece = true;
+                        board.getPositionPieceMap()[&board.getCellByPosition(x, y)]->getSprite().setPosition(sf::Mouse::getPosition(appWindow).x, sf::Mouse::getPosition(appWindow).y);
+                    }
+                }
+                
+            }
+            else{
+                held_piece = false;
+
+            }
         }
-
         appWindow.clear();
-        Board.draw(appWindow);
+        board.draw(appWindow);
         appWindow.display();
-
     }
- 
 }

@@ -14,6 +14,7 @@ class Board {
 private:
     std::array<std::array<Cell, 8>, 8> cells;
     std::unordered_map<std::string, Piece> piecesMap;
+    std::map<Cell*, Piece*> positionPieceMap;
     TextureLoader texture_loader;
     float originX = 0;
     float originY = 0;
@@ -28,7 +29,8 @@ public:
     TextureLoader& getTextureLoader();
     std::unordered_map<std::string, Piece>& getPiecesMap();
     Cell& getCellByPosition(int x, int y);
-
+    Piece& getPieceByName(std::string name);
+    std::map<Cell*, Piece*>& getPositionPieceMap();
 };
 
 

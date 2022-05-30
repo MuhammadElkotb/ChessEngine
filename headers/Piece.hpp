@@ -14,6 +14,7 @@ public:
     void setCell(Cell& cell);
     void setSprite(sf::Sprite sprite);
     sf::Sprite& getSprite();
+    void move(Cell& cell);
     
     
 };
