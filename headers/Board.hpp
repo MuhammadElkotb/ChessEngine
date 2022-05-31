@@ -28,7 +28,7 @@ public:
     void draw(sf::RenderWindow& window);
     TextureLoader& getTextureLoader();
     std::unordered_map<std::string, Piece>& getPiecesMap();
-    Cell& getCellByPosition(int x, int y);
+    Cell* getCellByPosition(int x, int y);
     Piece& getPieceByName(std::string name);
     std::map<Cell*, Piece*>& getPositionPieceMap();
 };

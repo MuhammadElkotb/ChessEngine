@@ -4,11 +4,13 @@
 #include <memory>
 #include "..\headers\TextureLoader.hpp"
 
-
 Board::Board()
 {
     this->initBoard();
     this->initPieces();
+    std::cout << sizeof(Cell) << " " << sizeof(Piece) << " " << sizeof(Cell*) << std::endl;
+    std::cout << sizeof(this->cells);
+
 }
 
 Board::~Board()
@@ -80,7 +82,6 @@ void Board::initPieces()
     blackKnight2.setCell(this->getCellByPosition(0, pos++));
     blackRook2.setCell(this->getCellByPosition(0, pos++));
 
-
     blackRook1.setSprite(sf::Sprite(this->texture_loader.getBlackRookTexture()));
     blackKnight1.setSprite(sf::Sprite(this->texture_loader.getBlackKnightTexture()));
     blackBioshop1.setSprite(sf::Sprite(this->texture_loader.getBlackBioshopTexture()));
@@ -98,9 +99,6 @@ void Board::initPieces()
     this->piecesMap["bB2"] = blackBioshop2;
     this->piecesMap["bN2"] = blackKnight2;
     this->piecesMap["bR2"] = blackRook2;
-
-  
-
 
     // init White Pieces in their intial positions left to right
     Piece whiteRook1;
@@ -139,11 +137,6 @@ void Board::initPieces()
     this->piecesMap["wB2"] = whiteBioshop2;
     this->piecesMap["wN2"] = whiteKnight2;
     this->piecesMap["wR2"] = whiteRook2;
-
-
-    for(auto& kv : this->piecesMap){
-        this->positionPieceMap[&this->getCellByPosition(kv.second.getCell().x, kv.second.getCell().y)] = &kv.second;
-    }
 }
 
 void Board::draw(sf::RenderWindow &window)
@@ -155,7 +148,8 @@ void Board::draw(sf::RenderWindow &window)
             window.draw(this->cells[i][j].cellRect);
         }
     }
-    for(auto& kv : this->piecesMap){
+    for (auto &kv : this->piecesMap)
+    {
         window.draw(kv.second.getSprite());
     }
 }
@@ -165,15 +159,17 @@ TextureLoader &Board::getTextureLoader()
     return this->texture_loader;
 }
 
-Cell &Board::getCellByPosition(int x, int y)
+Cell* Board::getCellByPosition(int x, int y)
 {
-    return this->cells[x][y];
+    return &this->cells[x][y];
 }
 
-Piece& Board::getPieceByName(std::string name){
+Piece &Board::getPieceByName(std::string name)
+{
     return this->piecesMap[name];
 }
 
-std::map<Cell*, Piece*>& Board::getPositionPieceMap(){
+std::map<Cell *, Piece *> &Board::getPositionPieceMap()
+{
     return this->positionPieceMap;
 }

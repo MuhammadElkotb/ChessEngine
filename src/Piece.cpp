@@ -14,12 +14,12 @@ void Piece::setSprite(sf::Sprite sprite){
 
     this->sprite = sprite;
     this->sprite.setScale(0.07, 0.07);
-    this->sprite.setPosition({this->cell.cellRect.getPosition().x + 17, this->cell.cellRect.getPosition().y + 15});
+    this->sprite.setPosition({this->cell->cellRect.getPosition().x + 17, this->cell->cellRect.getPosition().y + 15});
 }
 
-void Piece::move(Cell& cell){
+void Piece::move(Cell* cell){
     this->setCell(cell);
-    this->sprite.setPosition({this->cell.cellRect.getPosition().x + 17, this->cell.cellRect.getPosition().y + 15});
+    this->sprite.setPosition({this->cell->cellRect.getPosition().x + 17, this->cell->cellRect.getPosition().y + 15});
 }
 
 sf::Sprite& Piece::getSprite(){
@@ -27,11 +27,11 @@ sf::Sprite& Piece::getSprite(){
 }
 
 
-Cell& Piece::getCell(){
+Cell* Piece::getCell(){
     return this->cell;
 }
 
-void Piece::setCell(Cell& cell){
+void Piece::setCell(Cell* cell){
     this->cell = cell;
 }
 

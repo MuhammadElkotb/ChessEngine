@@ -5,6 +5,7 @@ typedef struct Cell {
     sf::RectangleShape cellRect;
     int x;
     int y;
+    
 } Cell;
 
 

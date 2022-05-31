@@ -2,13 +2,13 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>M:\Prject\Cpp\ChessEngine\build\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>M:\Prject\Cpp\ChessEngine\build\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
       <FullPath>M:\Prject\Cpp\ChessEngine\build\Debug\ChessEngine.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>M:\Prject\Cpp\ChessEngine\build\x64\Debug\ALL_BUILD</FullPath>
+      <FullPath>M:\Prject\Cpp\ChessEngine\build\Debug\ALL_BUILD</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
