@@ -2,6 +2,12 @@
 #include <iostream>
 TextureLoader::TextureLoader()
 {
+    /*  creating unique pointers to allocate memory for 12 textures 6 for black pieces
+        6 for white piece.
+
+        unique pointers were chosen so that freeing memory is done automatically.
+    
+    */
     this->black_pawn = std::make_unique<sf::Texture>();
     this->black_bioshop = std::make_unique<sf::Texture>();
     this->black_knight = std::make_unique<sf::Texture>();
@@ -71,6 +77,7 @@ sf::Texture &TextureLoader::getBlackKnightTexture()
 {
     return *this->black_knight;
 }
+
 
 sf::Texture &TextureLoader::getBlackRookTexture()
 {

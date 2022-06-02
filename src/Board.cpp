@@ -8,8 +8,6 @@ Board::Board()
 {
     this->initBoard();
     this->initPieces();
-    std::cout << sizeof(Cell) << " " << sizeof(Piece) << " " << sizeof(Cell*) << std::endl;
-    std::cout << sizeof(this->cells);
 
 }
 
@@ -72,6 +70,8 @@ void Board::initPieces()
     Piece blackBioshop2;
     Piece blackKnight2;
     Piece blackRook2;
+
+    
     int pos = 0;
     blackRook1.setCell(this->getCellByPosition(0, pos++));
     blackKnight1.setCell(this->getCellByPosition(0, pos++));
