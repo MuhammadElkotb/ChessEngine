@@ -9,6 +9,10 @@ Board::Board()
     this->initBoard();
     this->initPieces();
 
+    for (auto &kv : this->piecesMap)
+    {
+        this->positionPieceMap[kv.second.getCell()] = &kv.second;
+    }
 }
 
 Board::~Board()
@@ -71,7 +75,6 @@ void Board::initPieces()
     Piece blackKnight2;
     Piece blackRook2;
 
-    
     int pos = 0;
     blackRook1.setCell(this->getCellByPosition(0, pos++));
     blackKnight1.setCell(this->getCellByPosition(0, pos++));
@@ -159,7 +162,7 @@ TextureLoader &Board::getTextureLoader()
     return this->texture_loader;
 }
 
-Cell* Board::getCellByPosition(int x, int y)
+Cell *Board::getCellByPosition(int x, int y)
 {
     return &this->cells[x][y];
 }

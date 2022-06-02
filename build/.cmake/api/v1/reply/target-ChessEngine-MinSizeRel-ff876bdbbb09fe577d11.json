@@ -42,7 +42,7 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 37,
+				"line" : 43,
 				"parent" : 0
 			},
 			{
@@ -147,6 +147,36 @@
 			{
 				"backtrace" : 2,
 				"fragment" : "..\\SFML\\lib\\sfml-window-d.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\SFML\\lib\\sfml-audio.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\SFML\\lib\\sfml-graphics.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\SFML\\lib\\sfml-main.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\SFML\\lib\\sfml-network.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\SFML\\lib\\sfml-system.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\SFML\\lib\\sfml-window.lib",
 				"role" : "libraries"
 			},
 			{

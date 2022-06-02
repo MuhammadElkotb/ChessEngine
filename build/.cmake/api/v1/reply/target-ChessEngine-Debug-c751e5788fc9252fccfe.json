@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "RelWithDebInfo/ChessEngine.exe"
+			"path" : "Debug/ChessEngine.exe"
 		},
 		{
-			"path" : "RelWithDebInfo/ChessEngine.pdb"
+			"path" : "Debug/ChessEngine.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -42,7 +42,7 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 37,
+				"line" : 43,
 				"parent" : 0
 			},
 			{
@@ -59,7 +59,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /O2 /Ob1 /DNDEBUG -MD"
+					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd"
 				},
 				{
 					"fragment" : "-std:c++20"
@@ -102,7 +102,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /O2 /Ob1 /DNDEBUG -MD",
+				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd",
 				"role" : "flags"
 			},
 			{
@@ -147,6 +147,36 @@
 			{
 				"backtrace" : 2,
 				"fragment" : "..\\SFML\\lib\\sfml-window-d.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\SFML\\lib\\sfml-audio.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\SFML\\lib\\sfml-graphics.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\SFML\\lib\\sfml-main.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\SFML\\lib\\sfml-network.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\SFML\\lib\\sfml-system.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\SFML\\lib\\sfml-window.lib",
 				"role" : "libraries"
 			},
 			{
