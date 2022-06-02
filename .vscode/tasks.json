@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "build",
-            "command": "cmake --build .",
+            "command": "cmake --build . --config Debug",
             "type": "shell",
             "args": [],
             "problemMatcher": [
