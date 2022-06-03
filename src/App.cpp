@@ -2,7 +2,9 @@
 #include "..\headers\Board.hpp"
 #include <SFML\Graphics.hpp>
 #include <SFML\Window.hpp>
+
 #define log(X) std::cout << X << std::endl
+
 int main()
 {
 
@@ -26,9 +28,13 @@ int main()
 
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
-                int y = sf::Mouse::getPosition(appWindow).x / 100;
-                int x = sf::Mouse::getPosition(appWindow).y / 100;
-                Cell *cell_clicked = board.getCellByPosition(x, y);
+
+                int col = sf::Mouse::getPosition(appWindow).x / 100;
+                int row = sf::Mouse::getPosition(appWindow).y / 100;
+                if (row < 0 || row > 7 || col < 0 || col > 7)
+                    break;
+
+                Cell *cell_clicked = board.getCellByPosition(row, col);
                 bool found_piece = board.getPositionPieceMap().find(cell_clicked) != board.getPositionPieceMap().end();
                 if (found_piece && !held_piece)
                 {
@@ -38,9 +44,14 @@ int main()
                 if (held_piece)
                 {
                     // log(current_cell);
-                    float x_mouse = sf::Mouse::getPosition(appWindow).x;
-                    float y_mouse = sf::Mouse::getPosition(appWindow).y;
-                    board.getPositionPieceMap()[current_cell]->getSprite().setPosition(x_mouse, y_mouse);
+                    float x_mouse = sf::Mouse::getPosition(appWindow).x - 7;
+                    float y_mouse = sf::Mouse::getPosition(appWindow).y - 15;
+                    Piece *current_piece = board.getPositionPieceMap()[current_cell];
+                    current_piece->getSprite().setPosition(x_mouse, y_mouse);
+                    if (current_piece->getCell()->row == 1)
+                    {
+                        board.getCellByPosition(current_cell->row + 1, current_cell->col)->cellRect.setFillColor(sf::Color({105, 54, 123}));
+                    }
                 }
             }
             if (event.type == sf::Event::MouseButtonReleased)
@@ -49,11 +60,8 @@ int main()
                 held_piece = false;
                 int y = sf::Mouse::getPosition(appWindow).x / 100;
                 int x = sf::Mouse::getPosition(appWindow).y / 100;
-                Cell *temp_cell = board.getCellByPosition(x, y);
-                Piece *temp_piece;
-                temp_piece = board.getPositionPieceMap()[current_cell];
-                board.getPositionPieceMap().erase(current_cell);
-                board.getPositionPieceMap()[temp_cell] = temp_piece;
+                Piece *temp_piece = board.getPositionPieceMap()[current_cell];
+                temp_piece->move(current_cell);
             }
         }
         appWindow.clear();

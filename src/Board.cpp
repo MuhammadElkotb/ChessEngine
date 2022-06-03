@@ -9,9 +9,9 @@ Board::Board()
     this->initBoard();
     this->initPieces();
 
-    for (auto &kv : this->piecesMap)
+    for (Piece &piece : this->pieces)
     {
-        this->positionPieceMap[kv.second.getCell()] = &kv.second;
+        this->positionPieceMap[piece.getCell()] = &piece;
     }
 }
 
@@ -37,8 +37,8 @@ void Board::initBoard()
             cellRect.setPosition({posX, posY});
             posX += 100;
             cell.cellRect = cellRect;
-            cell.x = i;
-            cell.y = j;
+            cell.row = i;
+            cell.col = j;
             this->cells[i][j] = cell;
 
             if (j != 7)
@@ -53,16 +53,22 @@ void Board::initPieces()
 {
 
     // init Black and White pawns in their intial positions
+    int pos = 0;
+
     for (int i = 0; i < 8; i++)
     {
         Piece blackPawn;
-        blackPawn.setCell(this->getCellByPosition(1, i));
+        blackPawn.setCell(this->getCellByPosition(1, pos++));
         blackPawn.setSprite(sf::Sprite(this->texture_loader.getBlackPawnTexture()));
-        this->piecesMap["bP" + std::to_string(i)] = blackPawn;
+        this->pieces[i] = blackPawn;
+    }
+    pos = 0;
+    for (int i = 8; i < 16; i++)
+    {
         Piece whitePawn;
-        whitePawn.setCell(this->getCellByPosition(6, i));
+        whitePawn.setCell(this->getCellByPosition(6, pos++));
         whitePawn.setSprite(sf::Sprite(this->texture_loader.getWhitePawnTexture()));
-        this->piecesMap["wP" + std::to_string(i)] = whitePawn;
+        this->pieces[i] = whitePawn;
     }
 
     // init Black Pieces in their intial positions left to right
@@ -75,7 +81,8 @@ void Board::initPieces()
     Piece blackKnight2;
     Piece blackRook2;
 
-    int pos = 0;
+    pos = 0;
+
     blackRook1.setCell(this->getCellByPosition(0, pos++));
     blackKnight1.setCell(this->getCellByPosition(0, pos++));
     blackBioshop1.setCell(this->getCellByPosition(0, pos++));
@@ -93,15 +100,15 @@ void Board::initPieces()
     blackBioshop2.setSprite(sf::Sprite(this->texture_loader.getBlackBioshopTexture()));
     blackKnight2.setSprite(sf::Sprite(this->texture_loader.getBlackKnightTexture()));
     blackRook2.setSprite(sf::Sprite(this->texture_loader.getBlackRookTexture()));
-
-    this->piecesMap["bR1"] = blackRook1;
-    this->piecesMap["bN1"] = blackKnight1;
-    this->piecesMap["bB1"] = blackBioshop1;
-    this->piecesMap["bK"] = blackKing;
-    this->piecesMap["bQ"] = blackQueen;
-    this->piecesMap["bB2"] = blackBioshop2;
-    this->piecesMap["bN2"] = blackKnight2;
-    this->piecesMap["bR2"] = blackRook2;
+    int piece_ctr = 16;
+    this->pieces[piece_ctr++] = blackRook1;
+    this->pieces[piece_ctr++] = blackKnight1;
+    this->pieces[piece_ctr++] = blackBioshop1;
+    this->pieces[piece_ctr++] = blackKing;
+    this->pieces[piece_ctr++] = blackQueen;
+    this->pieces[piece_ctr++] = blackBioshop2;
+    this->pieces[piece_ctr++] = blackKnight2;
+    this->pieces[piece_ctr++] = blackRook2;
 
     // init White Pieces in their intial positions left to right
     Piece whiteRook1;
@@ -132,14 +139,14 @@ void Board::initPieces()
     whiteKnight2.setSprite(sf::Sprite(this->texture_loader.getWhiteKnightTexture()));
     whiteRook2.setSprite(sf::Sprite(this->texture_loader.getWhiteRookTexture()));
 
-    this->piecesMap["wR1"] = whiteRook1;
-    this->piecesMap["wN1"] = whiteKnight1;
-    this->piecesMap["wB1"] = whiteBioshop1;
-    this->piecesMap["wK"] = whiteKing;
-    this->piecesMap["wQ"] = whiteQueen;
-    this->piecesMap["wB2"] = whiteBioshop2;
-    this->piecesMap["wN2"] = whiteKnight2;
-    this->piecesMap["wR2"] = whiteRook2;
+    this->pieces[piece_ctr++] = whiteRook1;
+    this->pieces[piece_ctr++] = whiteKnight1;
+    this->pieces[piece_ctr++] = whiteBioshop1;
+    this->pieces[piece_ctr++] = whiteKing;
+    this->pieces[piece_ctr++] = whiteQueen;
+    this->pieces[piece_ctr++] = whiteBioshop2;
+    this->pieces[piece_ctr++] = whiteKnight2;
+    this->pieces[piece_ctr++] = whiteRook2;
 }
 
 void Board::draw(sf::RenderWindow &window)
@@ -151,9 +158,11 @@ void Board::draw(sf::RenderWindow &window)
             window.draw(this->cells[i][j].cellRect);
         }
     }
-    for (auto &kv : this->piecesMap)
+
+    for (Piece &piece : this->pieces)
     {
-        window.draw(kv.second.getSprite());
+        if (!piece.isKilled())
+            window.draw(piece.getSprite());
     }
 }
 
@@ -162,14 +171,9 @@ TextureLoader &Board::getTextureLoader()
     return this->texture_loader;
 }
 
-Cell *Board::getCellByPosition(int x, int y)
+Cell *Board::getCellByPosition(int row, int col)
 {
-    return &this->cells[x][y];
-}
-
-Piece &Board::getPieceByName(std::string name)
-{
-    return this->piecesMap[name];
+    return &this->cells[row][col];
 }
 
 std::map<Cell *, Piece *> &Board::getPositionPieceMap()

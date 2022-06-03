@@ -2,6 +2,7 @@
 
 Piece::Piece()
 {
+    this->killed = false;
 }
 
 Piece::~Piece()
@@ -35,4 +36,15 @@ Cell *Piece::getCell()
 void Piece::setCell(Cell *cell)
 {
     this->cell = cell;
+}
+
+void Piece::kill()
+{
+    this->cell = nullptr;
+    this->killed = true;
+}
+
+bool Piece::isKilled()
+{
+    return this->killed;
 }
