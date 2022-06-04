@@ -14,8 +14,8 @@ class Board
 
 private:
     std::array<std::array<Cell, 8>, 8> cells;
-    std::array<Piece*, 32> pieces;
-    std::map<Cell *, Piece *> positionPieceMap;
+    std::array<Piece *, 32> pieces;
+    std::unordered_map<Cell *, Piece *> positionPieceMap;
     TextureLoader texture_loader;
     float originX = 0;
     float originY = 0;
@@ -29,8 +29,7 @@ public:
     void draw(sf::RenderWindow &window);
     TextureLoader &getTextureLoader();
     Cell *getCellByPosition(int row, int col);
-    std::map<Cell *, Piece *> &getPositionPieceMap();
-    
+    std::unordered_map<Cell *, Piece *> &getPositionPieceMap();
 };
 
 #endif

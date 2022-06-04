@@ -197,7 +197,7 @@ Cell *Board::getCellByPosition(int row, int col)
     return &this->cells[row][col];
 }
 
-std::map<Cell *, Piece *> &Board::getPositionPieceMap()
+std::unordered_map<Cell *, Piece *> &Board::getPositionPieceMap()
 {
     return this->positionPieceMap;
 }

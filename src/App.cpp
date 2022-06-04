@@ -41,7 +41,7 @@ int main()
                 if (row < 0 || row > 7 || col < 0 || col > 7)
                     break;
 
-                std::set<std::pair<int, int>> move_cells;
+                std::vector<std::pair<int, int>> move_cells;
                 Cell *cell_clicked = board.getCellByPosition(row, col);
                 bool found_piece = board.getPositionPieceMap().find(cell_clicked) != board.getPositionPieceMap().end();
                 if (found_piece && !held_piece)
@@ -62,7 +62,7 @@ int main()
             }
             if (event.type == sf::Event::MouseButtonReleased && held_piece)
             {
-                std::set<std::pair<int, int>> move_cells;
+                std::vector<std::pair<int, int>> move_cells;
 
                 int y = sf::Mouse::getPosition(appWindow).x / 100;
                 int x = sf::Mouse::getPosition(appWindow).y / 100;

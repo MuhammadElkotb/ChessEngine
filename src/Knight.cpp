@@ -1,7 +1,7 @@
 #include "..\headers\Knight.hpp"
 
 
-std::set<std::pair<int, int>> Knight::moveCells()
+std::vector<std::pair<int, int>> Knight::moveCells()
 {
-    return std::set<std::pair<int, int>>();
+    return std::vector<std::pair<int, int>>();
 }

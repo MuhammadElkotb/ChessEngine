@@ -2,10 +2,12 @@
 #define BIOSHOP_H
 #include "Piece.hpp"
 #include <set>
+#include <unordered_map>
+
 class Bioshop : public Piece
 {
 public:
-    std::set<std::pair<int, int>> moveCells();
+    std::vector<std::pair<int, int>> moveCells();
 };
 
 #endif

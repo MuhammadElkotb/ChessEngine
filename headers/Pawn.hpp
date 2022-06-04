@@ -2,6 +2,8 @@
 #define PAWN_H
 #include "Piece.hpp"
 #include <set>
+#include <unordered_map>
+
 class Pawn : public Piece
 {
 private:
@@ -10,7 +12,7 @@ private:
 public:
     Pawn();
     ~Pawn();
-    std::set<std::pair<int, int>> moveCells();
+    std::vector<std::pair<int, int>> moveCells();
     
 };
 

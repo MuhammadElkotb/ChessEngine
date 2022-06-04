@@ -1,9 +1,9 @@
 #include "..\headers\Bioshop.hpp"
 
-std::set<std::pair<int, int>> Bioshop::moveCells()
+std::vector<std::pair<int, int>> Bioshop::moveCells()
 {
 
-    std::set<std::pair<int, int>> move_cells;
+    std::vector<std::pair<int, int>> move_cells;
 
     int row = this->cell->row;
     int col = this->cell->col;
@@ -13,8 +13,9 @@ std::set<std::pair<int, int>> Bioshop::moveCells()
     {
         row++;
         col++;
-        move_cells.insert(std::pair<int, int>(row, col));
-        }
+        // if(cell_piece_map.find())
+        move_cells.push_back(std::pair<int, int>(row, col));
+    }
 
     row = this->cell->row;
     col = this->cell->col;
@@ -23,7 +24,7 @@ std::set<std::pair<int, int>> Bioshop::moveCells()
     {
         row--;
         col--;
-        move_cells.insert(std::pair<int, int>(row, col));
+        move_cells.push_back(std::pair<int, int>(row, col));
     }
 
     row = this->cell->row;
@@ -33,7 +34,7 @@ std::set<std::pair<int, int>> Bioshop::moveCells()
     {
         row++;
         col--;
-        move_cells.insert(std::pair<int, int>(row, col));
+        move_cells.push_back(std::pair<int, int>(row, col));
     }
 
     row = this->cell->row;
@@ -43,7 +44,7 @@ std::set<std::pair<int, int>> Bioshop::moveCells()
     {
         row--;
         col++;
-        move_cells.insert(std::pair<int, int>(row, col));
+        move_cells.push_back(std::pair<int, int>(row, col));
     }
 
     return move_cells;

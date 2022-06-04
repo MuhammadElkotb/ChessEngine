@@ -4,6 +4,7 @@
 #include "Cell.hpp"
 #include <utility>
 #include <set>
+
 class Piece
 {
 protected:
@@ -11,10 +12,9 @@ protected:
     sf::Sprite sprite;
     bool killed = false;
     bool first_move = true;
-    bool white; 
+    bool white;
 
 public:
-
     Piece();
     ~Piece();
     Cell *getCell();
@@ -24,13 +24,11 @@ public:
     void move(Cell *cell);
     bool isKilled();
     void kill();
-    virtual std::set<std::pair<int, int>> moveCells() = 0;
+    virtual std::vector<std::pair<int, int>> moveCells() = 0;
     bool isWhite();
     bool isFirstMove();
-    void setWhite (bool white);
+    void setWhite(bool white);
     void setFirstMove(bool first_move);
-
-
 };
 
 #endif
