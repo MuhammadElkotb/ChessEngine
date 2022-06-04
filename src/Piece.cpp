@@ -1,5 +1,5 @@
 #include "..\headers\Piece.hpp"
-
+#include "..\headers\MACROS.hpp"
 Piece::Piece()
 {
     this->killed = false;
@@ -14,13 +14,13 @@ void Piece::setSprite(sf::Sprite sprite)
 
     this->sprite = sprite;
     this->sprite.setScale(0.07, 0.07);
-    this->sprite.setPosition({this->cell->cellRect.getPosition().x + 17, this->cell->cellRect.getPosition().y + 15});
+    this->sprite.setPosition({this->cell->cell_rect.getPosition().x + 17, this->cell->cell_rect.getPosition().y + 15});
 }
 
 void Piece::move(Cell *cell)
 {
     this->setCell(cell);
-    this->sprite.setPosition({this->cell->cellRect.getPosition().x + 17, this->cell->cellRect.getPosition().y + 15});
+    this->sprite.setPosition({this->cell->cell_rect.getPosition().x + 17, this->cell->cell_rect.getPosition().y + 15});
 }
 
 sf::Sprite &Piece::getSprite()

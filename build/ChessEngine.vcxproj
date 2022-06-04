@@ -313,6 +313,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Board.cpp" />
     <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Piece.cpp" />
     <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\TextureLoader.cpp" />
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Pawn.cpp" />
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Bioshop.cpp" />
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Knight.cpp" />
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Rook.cpp" />
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Queen.cpp" />
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\King.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="M:\Prject\Cpp\ChessEngine\build\ZERO_CHECK.vcxproj">

@@ -2,6 +2,7 @@
 #define PIECE_H
 #include <SFML\Graphics.hpp>
 #include "Cell.hpp"
+#include <utility>
 
 class Piece
 {
@@ -20,6 +21,7 @@ public:
     void move(Cell *cell);
     bool isKilled();
     void kill();
+    virtual std::vector<std::pair<int, int>> moveCells() = 0;
 };
 
 #endif

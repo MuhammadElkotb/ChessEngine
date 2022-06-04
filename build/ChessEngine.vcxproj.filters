@@ -13,6 +13,24 @@
     <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\TextureLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Pawn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Bioshop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Knight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Rook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Queen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\King.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="M:\Prject\Cpp\ChessEngine\CMakeLists.txt" />

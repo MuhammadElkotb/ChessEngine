@@ -5,12 +5,27 @@ src/App.cpp
 src/Board.cpp
 src/Piece.cpp
 src/TextureLoader.cpp
+src/Pawn.cpp
+src/Bioshop.cpp
+src/Knight.cpp
+src/Rook.cpp
+src/Queen.cpp
+src/King.cpp
 )
 set(HEADERS
 headers/Board.hpp
 headers/Piece.hpp
 headers/Cell.hpp
 headers/TextureLoader.hpp
+headers/MACROS.hpp
+headers/Pawn.hpp
+headers/Bioshop.hpp
+headers/Knight.hpp
+headers/Rook.hpp
+headers/Queen.hpp
+headers/King.hpp
+
+
 )
 
 add_executable(ChessEngine ${SOURCES})

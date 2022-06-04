@@ -14,7 +14,7 @@ class Board
 
 private:
     std::array<std::array<Cell, 8>, 8> cells;
-    std::array<Piece, 32> pieces;
+    std::array<Piece*, 32> pieces;
     std::map<Cell *, Piece *> positionPieceMap;
     TextureLoader texture_loader;
     float originX = 0;
@@ -30,6 +30,7 @@ public:
     TextureLoader &getTextureLoader();
     Cell *getCellByPosition(int row, int col);
     std::map<Cell *, Piece *> &getPositionPieceMap();
+    
 };
 
 #endif

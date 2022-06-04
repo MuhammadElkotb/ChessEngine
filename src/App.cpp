@@ -1,16 +1,19 @@
 #include <iostream>
+#include "..\headers\MACROS.hpp"
 #include "..\headers\Board.hpp"
 #include <SFML\Graphics.hpp>
 #include <SFML\Window.hpp>
 
-#define log(X) std::cout << X << std::endl
-
 int main()
 {
-
     sf::ContextSettings settings;
     Board board;
     sf::RenderWindow appWindow(sf::VideoMode(800, 800), "Chess Engine", sf::Style::Titlebar | sf::Style::Close, settings);
+    appWindow.setFramerateLimit(60);
+    sf::Cursor cursor_hand;
+    sf::Cursor cursor_defualt;
+    cursor_hand.loadFromSystem(sf::Cursor::Hand);
+    cursor_defualt.loadFromSystem(sf::Cursor::Arrow);
 
     int ctr = 0;
     bool held_piece = false;
@@ -44,15 +47,16 @@ int main()
                 if (held_piece)
                 {
                     // log(current_cell);
-                    float x_mouse = sf::Mouse::getPosition(appWindow).x - 7;
-                    float y_mouse = sf::Mouse::getPosition(appWindow).y - 15;
+                    float x_mouse = sf::Mouse::getPosition(appWindow).x - 20;
+                    float y_mouse = sf::Mouse::getPosition(appWindow).y - 25;
                     Piece *current_piece = board.getPositionPieceMap()[current_cell];
                     current_piece->getSprite().setPosition(x_mouse, y_mouse);
                     if (current_piece->getCell()->row == 1)
                     {
-                        board.getCellByPosition(current_cell->row + 1, current_cell->col)->cellRect.setFillColor(sf::Color({105, 54, 123}));
+                        board.getCellByPosition(current_cell->row + 1, current_cell->col)->cell_rect.setFillColor(sf::Color({105, 54, 123}));
                     }
                 }
+                appWindow.setMouseCursor(cursor_hand);
             }
             if (event.type == sf::Event::MouseButtonReleased)
             {
@@ -62,6 +66,9 @@ int main()
                 int x = sf::Mouse::getPosition(appWindow).y / 100;
                 Piece *temp_piece = board.getPositionPieceMap()[current_cell];
                 temp_piece->move(current_cell);
+                Cell *move_cell = board.getCellByPosition(current_cell->row + 1, current_cell->col);
+                move_cell->cell_rect.setFillColor(move_cell->default_colour);
+                appWindow.setMouseCursor(cursor_defualt);
             }
         }
         appWindow.clear();
