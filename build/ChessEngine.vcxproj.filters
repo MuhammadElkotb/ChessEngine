@@ -31,6 +31,9 @@
     <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\King.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="M:\Prject\Cpp\ChessEngine\CMakeLists.txt" />

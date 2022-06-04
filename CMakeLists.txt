@@ -11,6 +11,8 @@ src/Knight.cpp
 src/Rook.cpp
 src/Queen.cpp
 src/King.cpp
+src/Controller.cpp
+
 )
 set(HEADERS
 headers/Board.hpp
@@ -24,6 +26,8 @@ headers/Knight.hpp
 headers/Rook.hpp
 headers/Queen.hpp
 headers/King.hpp
+headers/Controller.hpp
+
 
 
 )

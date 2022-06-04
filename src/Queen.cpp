@@ -1,6 +1,6 @@
 #include "..\headers\Queen.hpp"
 
-std::vector<std::pair<int, int>> Queen::moveCells()
+std::set<std::pair<int, int>> Queen::moveCells()
 {
-    return std::vector<std::pair<int, int>>();
+    return std::set<std::pair<int, int>>();
 }

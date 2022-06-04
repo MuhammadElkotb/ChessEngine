@@ -1,11 +1,11 @@
 #ifndef ROOK_H
 #define ROOK_H
 #include "Piece.hpp"
-
+#include <set>
 class Rook : public Piece
 {
 public:
-    std::vector<std::pair<int, int>> moveCells();
+    std::set<std::pair<int, int>> moveCells();
 };
 
 #endif

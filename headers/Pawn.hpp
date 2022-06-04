@@ -1,11 +1,17 @@
 #ifndef PAWN_H
 #define PAWN_H
 #include "Piece.hpp"
-
+#include <set>
 class Pawn : public Piece
 {
+private:
+    
+
 public:
-    std::vector<std::pair<int, int>> moveCells();
+    Pawn();
+    ~Pawn();
+    std::set<std::pair<int, int>> moveCells();
+    
 };
 
 #endif

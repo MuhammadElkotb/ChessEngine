@@ -319,6 +319,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Rook.cpp" />
     <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Queen.cpp" />
     <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\King.cpp" />
+    <ClCompile Include="M:\Prject\Cpp\ChessEngine\src\Controller.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="M:\Prject\Cpp\ChessEngine\build\ZERO_CHECK.vcxproj">

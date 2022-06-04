@@ -1,11 +1,11 @@
 #ifndef KING_H
 #define KING_H
 #include "Piece.hpp"
-#include <vector>
+#include <set>
 class King : public Piece
 {
-    public:
-        std::vector<std::pair<int, int>> moveCells();
+public:
+    std::set<std::pair<int, int>> moveCells();
 };
 
 #endif

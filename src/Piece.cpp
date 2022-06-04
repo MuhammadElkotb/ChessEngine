@@ -48,3 +48,20 @@ bool Piece::isKilled()
 {
     return this->killed;
 }
+
+bool Piece::isFirstMove()
+{
+    return this->first_move;
+}
+bool Piece::isWhite()
+{
+    return this->white;
+}
+void Piece::setFirstMove(bool first_move)
+{
+    this->first_move = first_move;
+}
+void Piece::setWhite(bool white)
+{
+    this->white = white;
+}

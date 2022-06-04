@@ -1,7 +1,7 @@
 #include "..\headers\King.hpp"
 
-std::vector<std::pair<int, int>> King::moveCells()
+std::set<std::pair<int, int>> King::moveCells()
 {
 
-    return std::vector<std::pair<int, int>>();
+    return std::set<std::pair<int, int>>();
 }
