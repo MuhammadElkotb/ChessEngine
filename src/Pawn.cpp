@@ -6,8 +6,7 @@ Pawn::~Pawn() {}
 
 std::vector<std::vector<std::pair<int, int>>> Pawn::moveCells()
 {
-    std::vector<std::vector<std::pair<int, int>>> move_cells;
-    move_cells.push_back(std::vector<std::pair<int, int>>());
+    std::vector<std::vector<std::pair<int, int>>> move_cells(1, std::vector<std::pair<int, int>>());
     if (this->white)
     {
         move_cells[0].push_back(std::pair<int, int>(this->cell->row - 1, this->cell->col));

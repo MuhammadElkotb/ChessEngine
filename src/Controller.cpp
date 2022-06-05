@@ -13,10 +13,13 @@ std::vector<std::pair<int, int>> Controller::validateMove(Board &board, Piece *p
     {
         for (auto &kv : v)
         {
-            Cell *cell = board.getCellByPosition(kv.first, kv.second);
-            if (board.getPositionPieceMap().find(cell) != board.getPositionPieceMap().end())
-                break;
-            empty_move_cells.push_back(kv);
+            if (kv.first >= 0 && kv.first < 8 && kv.second >= 0 && kv.second < 8)
+            {
+                Cell *cell = board.getCellByPosition(kv.first, kv.second);
+                if (board.getPositionPieceMap().find(cell) != board.getPositionPieceMap().end())
+                    break;
+                empty_move_cells.push_back(kv);
+            }
         }
     }
 

@@ -2,13 +2,12 @@
 
 std::vector<std::vector<std::pair<int, int>>> Queen::moveCells()
 {
-    std::vector<std::vector<std::pair<int, int>>> move_cells;
+    std::vector<std::vector<std::pair<int, int>>> move_cells(8, std::vector<std::pair<int, int>>());
 
     int row = this->cell->row;
     int col = this->cell->col;
 
     // moving down right
-    move_cells.push_back(std::vector<std::pair<int, int>>());
     while (row < 7 && col < 7)
     {
         row++;
@@ -16,7 +15,6 @@ std::vector<std::vector<std::pair<int, int>>> Queen::moveCells()
         move_cells[0].push_back(std::pair<int, int>(row, col));
     }
 
-    move_cells.push_back(std::vector<std::pair<int, int>>());
 
     row = this->cell->row;
     col = this->cell->col;
@@ -27,7 +25,6 @@ std::vector<std::vector<std::pair<int, int>>> Queen::moveCells()
         col--;
         move_cells[1].push_back(std::pair<int, int>(row, col));
     }
-    move_cells.push_back(std::vector<std::pair<int, int>>());
 
     row = this->cell->row;
     col = this->cell->col;
@@ -38,7 +35,6 @@ std::vector<std::vector<std::pair<int, int>>> Queen::moveCells()
         col--;
         move_cells[2].push_back(std::pair<int, int>(row, col));
     }
-    move_cells.push_back(std::vector<std::pair<int, int>>());
 
     row = this->cell->row;
     col = this->cell->col;
@@ -53,14 +49,12 @@ std::vector<std::vector<std::pair<int, int>>> Queen::moveCells()
     row = this->cell->row;
     col = this->cell->col;
     // moving right
-    move_cells.push_back(std::vector<std::pair<int, int>>());
     while (col < 7)
     {
         col++;
         move_cells[4].push_back(std::pair<int, int>(row, col));
     }
 
-    move_cells.push_back(std::vector<std::pair<int, int>>());
 
     row = this->cell->row;
     col = this->cell->col;
@@ -70,7 +64,6 @@ std::vector<std::vector<std::pair<int, int>>> Queen::moveCells()
         col--;
         move_cells[5].push_back(std::pair<int, int>(row, col));
     }
-    move_cells.push_back(std::vector<std::pair<int, int>>());
 
     row = this->cell->row;
     col = this->cell->col;
@@ -80,7 +73,6 @@ std::vector<std::vector<std::pair<int, int>>> Queen::moveCells()
         row--;
         move_cells[6].push_back(std::pair<int, int>(row, col));
     }
-    move_cells.push_back(std::vector<std::pair<int, int>>());
 
     row = this->cell->row;
     col = this->cell->col;
