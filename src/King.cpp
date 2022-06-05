@@ -1,8 +1,8 @@
 #include "..\headers\King.hpp"
 #include "..\headers\Board.hpp"
 
-std::vector<std::pair<int, int>> King::moveCells()
+std::vector<std::vector<std::pair<int, int>>> King::moveCells()
 {
 
-    return std::vector<std::pair<int, int>>();
+    return std::vector<std::vector<std::pair<int, int>>>();
 }

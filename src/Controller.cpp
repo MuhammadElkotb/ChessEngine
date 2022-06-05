@@ -6,16 +6,20 @@ Controller::~Controller() {}
 
 std::vector<std::pair<int, int>> Controller::validateMove(Board &board, Piece *piece)
 {
-    std::vector<std::pair<int, int>> move_cells = piece->moveCells();
+    std::vector<std::vector<std::pair<int, int>>> move_cells = piece->moveCells();
     std::vector<std::pair<int, int>> empty_move_cells;
 
-    for (auto &kv : move_cells)
+    for (auto &v : move_cells)
     {
-        Cell *cell = board.getCellByPosition(kv.first, kv.second);
-        if (board.getPositionPieceMap().find(cell) != board.getPositionPieceMap().end())
-            break;
-        empty_move_cells.push_back(kv);
+        for (auto &kv : v)
+        {
+            Cell *cell = board.getCellByPosition(kv.first, kv.second);
+            if (board.getPositionPieceMap().find(cell) != board.getPositionPieceMap().end())
+                break;
+            empty_move_cells.push_back(kv);
+        }
     }
+
     return empty_move_cells;
 }
 

@@ -4,6 +4,7 @@
 #include "Cell.hpp"
 #include <utility>
 #include <set>
+#include <array>
 
 class Piece
 {
@@ -24,7 +25,7 @@ public:
     void move(Cell *cell);
     bool isKilled();
     void kill();
-    virtual std::vector<std::pair<int, int>> moveCells() = 0;
+    virtual std::vector<std::vector<std::pair<int, int>>> moveCells() = 0;
     bool isWhite();
     bool isFirstMove();
     void setWhite(bool white);

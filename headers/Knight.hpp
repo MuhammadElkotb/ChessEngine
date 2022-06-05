@@ -8,7 +8,7 @@
 class Knight : public Piece
 {
 public:
-    std::vector<std::pair<int, int>> moveCells();
+    std::vector<std::vector<std::pair<int, int>>> moveCells();
 };
 
 #endif
