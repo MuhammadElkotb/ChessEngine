@@ -20,6 +20,14 @@ After some time of development again ...
 
 
 
+After some time of development again ... and again 
+
+![Screenshot](chess4.gif)
+
+
+
+
+
 HOW TO BULILD
 
       cd build
