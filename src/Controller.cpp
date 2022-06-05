@@ -1,8 +1,20 @@
 #include "..\headers\Controller.hpp"
 #include <vector>
 #include <utility>
-Controller::Controller() {}
-Controller::~Controller() {}
+Controller::Controller()
+{
+
+    this->move_sound_buffer.loadFromFile(MOVE_SOUND);
+    this->capture_sound_buffer.loadFromFile(CAPTURE_SOUND);
+    this->illegal_sound_buffer.loadFromFile(ILLEGAL_SOUND);
+
+    this->move_sound.setBuffer(this->move_sound_buffer);
+    this->capture_sound.setBuffer(this->capture_sound_buffer);
+    this->illegal_sound.setBuffer(this->illegal_sound_buffer);
+}
+Controller::~Controller()
+{
+}
 
 std::vector<std::pair<int, int>> Controller::validateMove(Board &board, Piece *piece)
 {
@@ -17,7 +29,13 @@ std::vector<std::pair<int, int>> Controller::validateMove(Board &board, Piece *p
             {
                 Cell *cell = board.getCellByPosition(kv.first, kv.second);
                 if (board.getPositionPieceMap().find(cell) != board.getPositionPieceMap().end())
+                {
+                    if (board.getPositionPieceMap()[cell]->isWhite() != piece->isWhite())
+                    {
+                        empty_move_cells.push_back(kv);
+                    }
                     break;
+                }
                 empty_move_cells.push_back(kv);
             }
         }
@@ -32,7 +50,8 @@ void Controller::drawMoveCells(Board &board, std::vector<std::pair<int, int>> &m
     for (auto &kv : move_cells)
     {
         Cell *cell = board.getCellByPosition(kv.first, kv.second);
-        cell->cell_rect.setFillColor(sf::Color({147, 212, 166}));
+        sf::Color color({147, 212, 166, 255});
+        cell->cell_rect.setFillColor(color);
     }
 }
 
@@ -49,14 +68,37 @@ void Controller::movePiece(Board &board, Piece *piece, std::pair<int, int> cell,
 
     if (std::find(move_cells.begin(), move_cells.end(), cell) != move_cells.end())
     {
+        bool capture = false;
+        Cell *move_cell = board.getCellByPosition(cell.first, cell.second);
+        if (board.getPositionPieceMap().find(move_cell) != board.getPositionPieceMap().end())
+        {
+            if (board.getPositionPieceMap()[move_cell]->isWhite() != piece->isWhite())
+            {
+                Piece *eaten_piece = board.getPositionPieceMap()[move_cell];
+                eaten_piece->kill();
+                capture = true;
+                this->capture_sound.play();
+            }
+        }
+
         board.getPositionPieceMap().erase(board.getCellByPosition(piece->getCell()->row, piece->getCell()->col));
 
-        piece->move(board.getCellByPosition(cell.first, cell.second));
+        piece->move(move_cell);
         piece->setFirstMove(false);
-        board.getPositionPieceMap()[piece->getCell()] = piece;
+        board.getPositionPieceMap()[move_cell] = piece;
+        if (!capture)
+        {
+            this->move_sound.play();
+        }
     }
     else
     {
         piece->move(piece->getCell());
+        this->illegal_sound.play();
     }
+}
+
+sf::Sound &Controller::getMoveSound()
+{
+    return this->move_sound;
 }

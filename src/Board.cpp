@@ -25,6 +25,10 @@ Board::Board()
 
 Board::~Board()
 {
+    for (int i = 0; i < 32; i++)
+    {
+        delete (this->pieces[i]);
+    }
 }
 
 void Board::initBoard()
