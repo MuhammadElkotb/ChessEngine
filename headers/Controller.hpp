@@ -4,9 +4,7 @@
 #include <vector>
 #include <utility>
 #include <SFML\Audio.hpp>
-#define MOVE_SOUND "..\\assets\\chess_move.wav"
-#define CAPTURE_SOUND "..\\assets\\CAPTURE.wav"
-#define ILLEGAL_SOUND "..\\assets\\Illegal_Move.wav"
+#include "MACROS.hpp"
 
 class Controller
 {
@@ -26,6 +24,8 @@ public:
     void drawMoveCells(Board &board, std::vector<std::pair<int, int>> &move_cells);
     void resetColor(Board &board, std::vector<std::pair<int, int>> &move_cells);
     void movePiece(Board &board, Piece *piece, std::pair<int, int> cell, std::vector<std::pair<int, int>> &move_cells);
+    bool nextMoveCheck(Board &board, Piece *piece);
+    Cell* checkCheckMate(Board& board, Piece* piece, std::vector<std::pair<int, int>> move_cells);
     sf::Sound &getMoveSound();
 };
 

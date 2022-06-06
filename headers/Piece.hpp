@@ -14,6 +14,8 @@ protected:
     bool killed = false;
     bool first_move = true;
     bool white;
+    bool pawn = false;
+    bool king = false;
 
 public:
     Piece();
@@ -30,6 +32,10 @@ public:
     bool isFirstMove();
     void setWhite(bool white);
     void setFirstMove(bool first_move);
+    bool isPawn();
+    void setPawn(bool pawn);
+    bool isKing();
+    void setKing(bool king);
 };
 
 #endif

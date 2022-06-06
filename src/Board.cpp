@@ -71,6 +71,7 @@ void Board::initPieces()
     {
         this->pieces[i] = new Pawn;
         this->pieces[i]->setWhite(false);
+        this->pieces[i]->setPawn(true);
         this->pieces[i]->setCell(this->getCellByPosition(1, pos++));
         this->pieces[i]->setSprite(sf::Sprite(this->texture_loader.getBlackPawnTexture()));
     }
@@ -79,6 +80,7 @@ void Board::initPieces()
     {
         this->pieces[i] = new Pawn;
         this->pieces[i]->setWhite(true);
+        this->pieces[i]->setPawn(true);
         this->pieces[i]->setCell(this->getCellByPosition(6, pos++));
         this->pieces[i]->setSprite(sf::Sprite(this->texture_loader.getWhitePawnTexture()));
     }
@@ -105,6 +107,7 @@ void Board::initPieces()
     this->pieces[piece_ctr] = new King;
     this->pieces[piece_ctr]->setCell(this->getCellByPosition(0, pos++));
     this->pieces[piece_ctr]->setWhite(false);
+    this->pieces[piece_ctr]->setKing(true);
     this->pieces[piece_ctr++]->setSprite(sf::Sprite(this->texture_loader.getBlackKingTexture()));
 
     this->pieces[piece_ctr] = new Queen;
@@ -149,6 +152,7 @@ void Board::initPieces()
     this->pieces[piece_ctr] = new King;
     this->pieces[piece_ctr]->setCell(this->getCellByPosition(7, pos++));
     this->pieces[piece_ctr]->setWhite(true);
+    this->pieces[piece_ctr]->setKing(true);
     this->pieces[piece_ctr++]->setSprite(sf::Sprite(this->texture_loader.getWhiteKingTexture()));
 
     this->pieces[piece_ctr] = new Queen;

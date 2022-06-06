@@ -65,3 +65,25 @@ void Piece::setWhite(bool white)
 {
     this->white = white;
 }
+
+bool Piece::isPawn()
+{
+    return this->pawn;
+}
+
+void Piece::setPawn(bool pawn)
+{
+    this->pawn = pawn;
+}
+
+
+bool Piece::isKing()
+{
+    return this->king;
+}
+
+void Piece::setKing(bool king)
+{
+    this->king = king;
+}
+
