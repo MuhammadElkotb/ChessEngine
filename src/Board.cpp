@@ -15,12 +15,10 @@ Board::Board()
 {
     this->initBoard();
     this->initPieces();
-    log("BEFORE");
     for (Piece *&piece : this->pieces)
     {
         this->positionPieceMap[piece->getCell()] = piece;
     }
-    log("After");
 }
 
 Board::~Board()
