@@ -3,7 +3,7 @@ ChessEngine using C++ and SFML
 
 UNDER CONSTRUCTION
 
-![Screenshot](chess.png)
+![Screenshot](chess5.gif)
 
 
 
