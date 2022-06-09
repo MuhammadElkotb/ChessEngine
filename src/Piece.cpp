@@ -1,5 +1,6 @@
 #include "..\headers\Piece.hpp"
 #include "..\headers\MACROS.hpp"
+
 Piece::Piece()
 {
     this->killed = false;
@@ -76,7 +77,6 @@ void Piece::setPawn(bool pawn)
     this->pawn = pawn;
 }
 
-
 bool Piece::isKing()
 {
     return this->king;
@@ -86,4 +86,3 @@ void Piece::setKing(bool king)
 {
     this->king = king;
 }
-

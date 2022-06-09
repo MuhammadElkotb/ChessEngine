@@ -1,5 +1,8 @@
 #include "..\headers\Controller.hpp"
+#include "..\headers\King.hpp"
+
 #include <vector>
+
 #include <utility>
 Controller::Controller()
 {
@@ -34,7 +37,7 @@ std::vector<std::pair<int, int>> Controller::validateMove(Board &board, Piece *p
                 Cell *cell = board.getCellByPosition(kv.first, kv.second);
 
                 // check if available move_cells has pieces or no, if yes then -->>
-                if (board.getPositionPieceMap().find(cell) != board.getPositionPieceMap().end())
+                if (board.getPieceByCell(cell) != NULL)
                 {
                     if (piece->isPawn() && move_index == 0)
                         break;
@@ -88,7 +91,7 @@ void Controller::movePiece(Board &board, Piece *piece, std::pair<int, int> cell,
         bool capture = false;
         Cell *move_cell = board.getCellByPosition(cell.first, cell.second);
 
-        if (board.getPositionPieceMap().find(move_cell) != board.getPositionPieceMap().end())
+        if (board.getPieceByCell(move_cell) != NULL)
         {
             if (board.getPositionPieceMap()[move_cell]->isWhite() != piece->isWhite())
             {
@@ -113,6 +116,13 @@ void Controller::movePiece(Board &board, Piece *piece, std::pair<int, int> cell,
         {
             this->move_sound.play();
         }
+        this->recolorKing(board, piece);
+        if (piece->isWhite())
+            white_check = false;
+        else
+            black_check = false;
+
+        this->whiteTurn = !this->whiteTurn;
     }
     else
     {
@@ -132,14 +142,127 @@ Cell *Controller::checkCheckMate(Board &board, Piece *piece, std::vector<std::pa
             Piece *check_piece = board.getPositionPieceMap()[cell];
             if (check_piece->isKing() && (piece->isWhite() != check_piece->isWhite()))
             {
+                if (check_piece->isWhite())
+                    white_check = true;
+                else
+                    black_check = true;
                 return cell;
             }
             else
+            {
                 cell->cell_rect.setFillColor(cell->default_colour);
+            }
         }
     }
     return NULL;
 }
+
+std::vector<std::pair<int, int>> Controller::nextMoveCheck(Board &board, Piece *piece, std::vector<std::pair<int, int>> &move_cells)
+{
+    std::vector<std::pair<int, int>> move_cell_ret;
+
+    Piece *king;
+
+    // look for your own king
+    for (auto &kv : board.getPositionPieceMap())
+    {
+        if (kv.second->isWhite() == piece->isWhite())
+        {
+            if (kv.second->isKing())
+            {
+                king = kv.second;
+                break;
+            }
+        }
+    }
+    Cell *real_cell = piece->getCell();
+
+    for (const std::pair<int, int> &cell : move_cells)
+    {
+        bool found_check_cell = false;
+
+        piece->setCell(board.getCellByPosition(cell.first, cell.second));
+        board.getPositionPieceMap().erase(real_cell);
+
+        bool found_piece = false;
+        Piece *piece_cell = board.getPieceByCell(board.getCellByPosition(cell.first, cell.second));
+
+        if (piece_cell != NULL)
+        {
+            board.getPositionPieceMap().erase(board.getCellByPosition(cell.first, cell.second));
+        }
+        else
+        {
+            board.getPositionPieceMap()[board.getCellByPosition(cell.first, cell.second)] = piece;
+        }
+
+        for (const auto &kv : board.getPositionPieceMap())
+        {
+            if (piece->isWhite() != kv.second->isWhite())
+            {
+                std::vector<std::pair<int, int>> move_cells_enemy = this->validateMove(board, kv.second);
+
+                for (const std::pair<int, int> &cell_pos : move_cells_enemy)
+                {
+                    if (king->getCell() == board.getCellByPosition(cell_pos.first, cell_pos.second))
+                    {
+                        found_check_cell = true;
+                        break;
+                    }
+                }
+            }
+            if (found_check_cell)
+                break;
+        }
+        if (piece_cell != NULL)
+            board.getPositionPieceMap()[board.getCellByPosition(cell.first, cell.second)] = piece_cell;
+        else
+        {
+            board.getPositionPieceMap().erase(board.getCellByPosition(cell.first, cell.second));
+        }
+        board.getPositionPieceMap()[real_cell] = piece;
+        if (!found_check_cell)
+            move_cell_ret.push_back(std::pair<int, int>(cell.first, cell.second));
+        piece->setCell(real_cell);
+    }
+    piece->setCell(real_cell);
+    return move_cell_ret;
+}
+
+void Controller::recolorKing(Board &board, Piece *piece)
+{
+    std::unordered_map<Cell *, Piece *> cell_piece_map = board.getPositionPieceMap();
+
+    for (auto &kv : cell_piece_map)
+    {
+        if (piece->isWhite() == kv.second->isWhite())
+        {
+            if (kv.second->isKing())
+            {
+                kv.second->getCell()->cell_rect.setFillColor(kv.second->getCell()->default_colour);
+                break;
+            }
+        }
+    }
+}
+
+/*bool Controller::checkWin(Board &board, bool white)
+{
+    bool win = true;
+    for (auto &kv : board.getPositionPieceMap())
+    {
+
+        if (kv.second->isWhite() != white)
+        {
+            std::vector<std::pair<int, int>> move_cells = this->validateMove(board, kv.second);
+            std::vector<std::pair<int, int>> move_cells_after_check = this->nextMoveCheck(board, kv.second, move_cells);
+
+            if (move_cells_after_check.size() > 0)
+                return false;
+        }
+    }
+    return win;
+}*/
 
 sf::Sound &Controller::getMoveSound()
 {

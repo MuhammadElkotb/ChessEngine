@@ -13,6 +13,7 @@ int main()
     Board board;
     Controller controller;
     sf::RenderWindow appWindow(sf::VideoMode(800, 800), "Chess Engine", sf::Style::Titlebar | sf::Style::Close, settings);
+    appWindow.setVerticalSyncEnabled(true);
     appWindow.setFramerateLimit(60);
     sf::Cursor cursor_hand;
     sf::Cursor cursor_defualt;
@@ -42,13 +43,18 @@ int main()
                     break;
 
                 std::vector<std::pair<int, int>> move_cells;
+                std::vector<std::pair<int, int>> move_cells_after_check;
                 Cell *cell_clicked = board.getCellByPosition(row, col);
-                bool found_piece = board.getPositionPieceMap().find(cell_clicked) != board.getPositionPieceMap().end();
-                if (found_piece && !held_piece)
+                Piece *found_piece = board.getPieceByCell(cell_clicked);
+                if (found_piece != NULL && !held_piece)
                 {
-                    held_piece = true;
-                    current_cell = cell_clicked;
-                    move_cells = controller.validateMove(board, board.getPositionPieceMap()[current_cell]);
+                    if (found_piece->isWhite() == controller.whiteTurn)
+                    {
+                        held_piece = true;
+                        current_cell = cell_clicked;
+                        move_cells = controller.validateMove(board, board.getPositionPieceMap()[current_cell]);
+                        move_cells_after_check = controller.nextMoveCheck(board, board.getPositionPieceMap()[current_cell], move_cells);
+                    }
                 }
                 if (held_piece)
                 {
@@ -56,7 +62,7 @@ int main()
                     float y_mouse = sf::Mouse::getPosition(appWindow).y - 25;
                     Piece *current_piece = board.getPositionPieceMap()[current_cell];
                     current_piece->getSprite().setPosition(x_mouse, y_mouse);
-                    controller.drawMoveCells(board, move_cells);
+                    controller.drawMoveCells(board, move_cells_after_check);
                 }
                 appWindow.setMouseCursor(cursor_hand);
             }
@@ -67,9 +73,16 @@ int main()
                 int y = sf::Mouse::getPosition(appWindow).x / 100;
                 int x = sf::Mouse::getPosition(appWindow).y / 100;
                 held_piece = false;
-                move_cells = controller.validateMove(board, board.getPositionPieceMap()[current_cell]);
+                Piece *move_piece = board.getPositionPieceMap()[current_cell];
+                Piece *move_piece2 = board.getPieceByCell(current_cell);
+                log(move_piece);
+                log(move_piece2);
+
+                move_cells = controller.validateMove(board, move_piece);
                 controller.resetColor(board, move_cells);
-                controller.movePiece(board, board.getPositionPieceMap()[current_cell], std::pair<int, int>(x, y), move_cells);
+                std::vector<std::pair<int, int>> move_cells_after_check = controller.nextMoveCheck(board, move_piece, move_cells);
+                controller.movePiece(board, move_piece, std::pair<int, int>(x, y), move_cells_after_check);
+                
                 appWindow.setMouseCursor(cursor_defualt);
             }
         }

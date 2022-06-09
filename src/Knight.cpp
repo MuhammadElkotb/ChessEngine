@@ -8,11 +8,6 @@ std::vector<std::vector<std::pair<int, int>>> Knight::moveCells()
    int row = this->cell->row;
    int col = this->cell->col;
 
-   /*for (int i = 0; i < 8; i++)
-   {
-      move_cells.push_back(std::vector<std::pair<int, int>>());
-   }*/
-
    // moving up left
    if (row > 0 && col > 0)
    {

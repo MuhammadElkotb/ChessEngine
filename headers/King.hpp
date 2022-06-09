@@ -4,7 +4,6 @@
 #include <set>
 #include <unordered_map>
 
-
 class King : public Piece
 {
 public:

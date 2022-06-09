@@ -104,16 +104,16 @@ void Board::initPieces()
     this->pieces[piece_ctr]->setWhite(false);
     this->pieces[piece_ctr++]->setSprite(sf::Sprite(this->texture_loader.getBlackBioshopTexture()));
 
+    this->pieces[piece_ctr] = new Queen;
+    this->pieces[piece_ctr]->setCell(this->getCellByPosition(0, pos++));
+    this->pieces[piece_ctr]->setWhite(false);
+    this->pieces[piece_ctr++]->setSprite(sf::Sprite(this->texture_loader.getBlackQueenTexture()));
+
     this->pieces[piece_ctr] = new King;
     this->pieces[piece_ctr]->setCell(this->getCellByPosition(0, pos++));
     this->pieces[piece_ctr]->setWhite(false);
     this->pieces[piece_ctr]->setKing(true);
     this->pieces[piece_ctr++]->setSprite(sf::Sprite(this->texture_loader.getBlackKingTexture()));
-
-    this->pieces[piece_ctr] = new Queen;
-    this->pieces[piece_ctr]->setCell(this->getCellByPosition(0, pos++));
-    this->pieces[piece_ctr]->setWhite(false);
-    this->pieces[piece_ctr++]->setSprite(sf::Sprite(this->texture_loader.getBlackQueenTexture()));
 
     this->pieces[piece_ctr] = new Bioshop;
     this->pieces[piece_ctr]->setCell(this->getCellByPosition(0, pos++));
@@ -149,16 +149,16 @@ void Board::initPieces()
     this->pieces[piece_ctr]->setWhite(true);
     this->pieces[piece_ctr++]->setSprite(sf::Sprite(this->texture_loader.getWhiteBioshopTexture()));
 
+    this->pieces[piece_ctr] = new Queen;
+    this->pieces[piece_ctr]->setCell(this->getCellByPosition(7, pos++));
+    this->pieces[piece_ctr]->setWhite(true);
+    this->pieces[piece_ctr++]->setSprite(sf::Sprite(this->texture_loader.getWhiteQueenTexture()));
+
     this->pieces[piece_ctr] = new King;
     this->pieces[piece_ctr]->setCell(this->getCellByPosition(7, pos++));
     this->pieces[piece_ctr]->setWhite(true);
     this->pieces[piece_ctr]->setKing(true);
     this->pieces[piece_ctr++]->setSprite(sf::Sprite(this->texture_loader.getWhiteKingTexture()));
-
-    this->pieces[piece_ctr] = new Queen;
-    this->pieces[piece_ctr]->setCell(this->getCellByPosition(7, pos++));
-    this->pieces[piece_ctr]->setWhite(true);
-    this->pieces[piece_ctr++]->setSprite(sf::Sprite(this->texture_loader.getWhiteQueenTexture()));
 
     this->pieces[piece_ctr] = new Bioshop;
     this->pieces[piece_ctr]->setCell(this->getCellByPosition(7, pos++));
@@ -186,11 +186,19 @@ void Board::draw(sf::RenderWindow &window)
         }
     }
 
-    for (Piece *&piece : this->pieces)
+    for (auto &kv : this->positionPieceMap)
     {
-        if (!piece->isKilled())
-            window.draw(piece->getSprite());
+        window.draw(kv.second->getSprite());
     }
+}
+
+Piece *Board::getPieceByCell(Cell *cell)
+{
+    if (this->positionPieceMap.find(cell) != this->positionPieceMap.end())
+    {
+        return this->getPositionPieceMap()[cell];
+    }
+    return NULL;
 }
 
 TextureLoader &Board::getTextureLoader()

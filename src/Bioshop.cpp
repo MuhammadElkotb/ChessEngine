@@ -15,7 +15,6 @@ std::vector<std::vector<std::pair<int, int>>> Bioshop::moveCells()
         move_cells[0].push_back(std::pair<int, int>(row, col));
     }
 
-
     row = this->cell->row;
     col = this->cell->col;
     // moving left up

@@ -17,6 +17,9 @@ private:
     sf::Sound capture_sound;
     sf::Sound illegal_sound;
 
+    bool black_check = false;
+    bool white_check = false;
+
 public:
     Controller();
     ~Controller();
@@ -24,9 +27,13 @@ public:
     void drawMoveCells(Board &board, std::vector<std::pair<int, int>> &move_cells);
     void resetColor(Board &board, std::vector<std::pair<int, int>> &move_cells);
     void movePiece(Board &board, Piece *piece, std::pair<int, int> cell, std::vector<std::pair<int, int>> &move_cells);
-    bool nextMoveCheck(Board &board, Piece *piece);
-    Cell* checkCheckMate(Board& board, Piece* piece, std::vector<std::pair<int, int>> move_cells);
+    std::vector<std::pair<int, int>> nextMoveCheck(Board &board, Piece *piece, std::vector<std::pair<int, int>> &move_cells);
+    Cell *checkCheckMate(Board &board, Piece *piece, std::vector<std::pair<int, int>> move_cells);
+    void recolorKing(Board &board, Piece *piece);
+    bool checkWin(Board &board, bool white);
     sf::Sound &getMoveSound();
+
+    bool whiteTurn = true;
 };
 
 #endif
