@@ -4,13 +4,12 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
         {
             "name": "Launch",
-            "type" : "cppvsdbg",
-            "cwd": "${workspaceRoot}\\build",
+            "type": "cppvsdbg",
             "request": "launch",
-            "program" : "Debug\\ChessEngine.exe",
+            "cwd": "${workspaceRoot}\\build\\Debug",
+            "program": "chessEngine.exe",
             "console": "externalTerminal",
             "preLaunchTask": "build"
         }

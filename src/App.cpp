@@ -82,7 +82,7 @@ int main()
                 controller.resetColor(board, move_cells);
                 std::vector<std::pair<int, int>> move_cells_after_check = controller.nextMoveCheck(board, move_piece, move_cells);
                 controller.movePiece(board, move_piece, std::pair<int, int>(x, y), move_cells_after_check);
-                
+
                 appWindow.setMouseCursor(cursor_defualt);
             }
         }
