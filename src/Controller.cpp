@@ -246,23 +246,12 @@ void Controller::recolorKing(Board &board, Piece *piece)
     }
 }
 
-/*bool Controller::checkWin(Board &board, bool white)
+
+//TODO: checking win Condition not yet done
+bool Controller::checkWin(Board &board, bool white)
 {
-    bool win = true;
-    for (auto &kv : board.getPositionPieceMap())
-    {
 
-        if (kv.second->isWhite() != white)
-        {
-            std::vector<std::pair<int, int>> move_cells = this->validateMove(board, kv.second);
-            std::vector<std::pair<int, int>> move_cells_after_check = this->nextMoveCheck(board, kv.second, move_cells);
-
-            if (move_cells_after_check.size() > 0)
-                return false;
-        }
-    }
-    return win;
-}*/
+}
 
 sf::Sound &Controller::getMoveSound()
 {

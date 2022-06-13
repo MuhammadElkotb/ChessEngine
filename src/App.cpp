@@ -9,6 +9,7 @@
 
 int main()
 {
+
     sf::ContextSettings settings;
     Board board;
     Controller controller;
