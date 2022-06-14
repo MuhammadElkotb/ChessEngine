@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "build",
-            "command": "cmake --build . --config Debug",
+            "command": "cmake --build . --config Debug -- /p:Platform=x86",
             "type": "shell",
             "args": [],
             "problemMatcher": [
@@ -11,6 +11,9 @@
             ],
             "options": {
                 "cwd": "${workspaceRoot}\\build"
+            },
+            "presentation": {
+                "clear": true
             },
             "group": "build"
         }

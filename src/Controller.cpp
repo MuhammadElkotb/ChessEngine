@@ -251,6 +251,9 @@ void Controller::recolorKing(Board &board, Piece *piece)
 bool Controller::checkWin(Board &board, bool white)
 {
 
+    return false;
+
+
 }
 
 sf::Sound &Controller::getMoveSound()
